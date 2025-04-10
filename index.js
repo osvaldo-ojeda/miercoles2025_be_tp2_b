@@ -187,9 +187,75 @@ let nombres = ["Juan", "Pedro", "Maria", "Luis"];
 // console.log(`🚀 ~ nombresUppercase:`, nombresUppercase)
 
 let nombressUppercase = nombres.map((elemento, index, array) => {
-//   console.log(`🚀 ~ index:`, index);
-//   console.log(`🚀 ~ nombressUppercase ~ array:`, array)
+  //   console.log(`🚀 ~ index:`, index);
+  //   console.log(`🚀 ~ nombressUppercase ~ array:`, array)
   return elemento.toUpperCase();
 });
-console.log(`🚀 ~ nombressUppercase:`, nombressUppercase);
-console.log(`🚀 ~ nombres:`, nombres);
+// console.log(`🚀 ~ nombressUppercase:`, nombressUppercase);
+// console.log(`🚀 ~ nombres:`, nombres);
+
+// ejercicio 2
+
+const numeros = [10, 20, 30, 40, 50];
+// console.log(`🚀 ~ numeros:`, numeros)
+const inicio = 1;
+const fin = 4;
+//Resultado esperado : [20, 30, 40, 50]
+// function obtenerSubArray(array, ini, fin) {
+//      // return array.splice(ini, fin);
+//      // return [...array].splice(ini, fin);
+//      return structuredClone(array).splice(ini, fin);
+// }
+// // const obtenerSubArray=(array, ini, fin)=>[...array].splice(ini, fin)
+
+function obtenerSubArray(array, ini, fin) {
+  return array.slice(ini);
+}
+// console.log(`🚀 ~ obtenerSubArray:`, obtenerSubArray(numeros, inicio, fin))
+// console.log(`🚀 ~ numeros:`, numeros)
+
+// ejercicio 3
+const numeros2 = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+function filtrarPares(array) {
+  return array.filter((element) => element % 2 === 0);
+}
+// console.log(`🚀 ~ filtrarPares:`, filtrarPares(numeros2))
+// console.log(`🚀 ~ numeros2:`, numeros2)
+
+// ejercicio 4
+const numeros3 = [10, 20, 30, 40, 50];
+//Resultado esperado : 150
+function sumarTodos(array) {
+  return array.reduce((acumulador, element) => {
+    // console.log(`🚀 ~ returnarray.reduce ~ acumulador:`, acumulador)
+    // console.log(`🚀 ~ returnarray.reduce ~ element:`, element)
+    return acumulador + element;
+  }, 0);
+}
+// console.log(`🚀 ~ numeros3:`, numeros3)
+// console.log(`🚀 ~ sumarTodos:`, sumarTodos(numeros3))
+
+// ejercicio 5
+
+const productos = [
+  { nombre: "manzanas", categoria: "frutas", precio: 2 },
+  { nombre: "zanahorias", categoria: "verduras", precio: 1 },
+  { nombre: "uvas", categoria: "frutas", precio: 3 },
+  { nombre: "lechuga", categoria: "verduras", precio: 0.5 },
+];
+//Resultado esperado :
+//    {
+//      frutas: ["manzanas", "uvas"],
+//      verduras: ["zanahorias", "lechuga"]
+//    }
+function agruparPorCategoria(array) {
+  return array.reduce((acumulador, element) => {
+    if (!acumulador[element.categoria]) {
+      acumulador[element.categoria] = [element.nombre];
+    } else {
+      acumulador[element.categoria].push(element.nombre);
+    }
+    return acumulador;
+  }, {});
+}
+console.log(`🚀 ~ agruparPorCategoria:`, agruparPorCategoria(productos));
