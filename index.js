@@ -67,4 +67,42 @@ async function dataJson() {
   }
 }
 
-dataJson();
+// dataJson();
+
+const obtenerdatos = (exitosa) => {
+  return new Promise((res, rej) => {
+    setTimeout(() => {
+      if (exitosa) {
+        res({
+          id: 1,
+          nombre: "Juan",
+          edad: 30,
+        });
+      } else {
+        rej("Error al obtener los datos");
+      }
+    }, 2000);
+  });
+};
+
+// obtenerdatos(false)
+//   .then((res) => console.log(res))
+//   .catch((err) => console.log(err));
+
+async function obtenerPersonajes() {
+  try {
+     const info=[]
+     const res = await fetch("https://rickandmortyapi.com/api/character");
+     const data = await res.json();
+     data.results.slice(0, 5).forEach((element) => {
+          //  console.log(`🚀 ~ data.results.slice ~ element:`, element.name);
+          info.push(element.name);
+     });
+     console.log(`🚀 ~ obtenerPersonajes ~ info:`, info)
+    //     console.log(`🚀 ~ obtenerPersonajes ~ data:`, data);
+  } catch (error) {
+    console.error(`🚀 ~ obtenerPersonajes ~ error:`, error);
+  }
+}
+
+obtenerPersonajes();
